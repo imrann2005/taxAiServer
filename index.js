@@ -1,9 +1,12 @@
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
 const PORT = 3000;
 
-// Sample bank statement JSON
+// Enable CORS
+app.use(cors());
+
 const bankStatement = {
   "Bank Name": "XYZ Bank Ltd.",
   "Branch": "Mumbai Main Branch",
@@ -117,7 +120,7 @@ const bankStatement = {
 };
 
 // API Endpoint to return the bank statement
-app.get("/api/statement/:pan", (req, res) => {
+app.get("/api/statement", (req, res) => {
   res.json(bankStatement);
 });
 
